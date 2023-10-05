@@ -17,17 +17,23 @@ def test_dish():
     assert pizzaMozzarela.price == 50.00
 
     assert pizzaMozzarela.__repr__() == "Dish('pizza de mozzarella', R$50.00)"
+    assert pizzaMozzarela2.__repr__() == "Dish('pizza de mozzarella', R$50.00)"
+    assert pastChicken.__repr__() == "Dish('frango empanado', R$25.00)"
 
     assert pizzaMozzarela.__eq__(pizzaMozzarela2) is True
     assert pizzaMozzarela2.__eq__(pastChicken) is False
+    assert pizzaMozzarela.__eq__(pastChicken) is False
 
     assert hash(pizzaMozzarela) == hash(pizzaMozzarela2)
     assert hash(pizzaMozzarela) != hash(pastChicken)
+    assert hash(pizzaMozzarela2) != hash(pastChicken)
 
     pizzaMozzarela.add_ingredient_dependency(Ingredient("tomate"), 1)
+    pizzaMozzarela.add_ingredient_dependency(Ingredient("Ketshup"), 5)
     pizzaMozzarela.add_ingredient_dependency(Ingredient("queijo mussarela"), 1)
 
     assert pizzaMozzarela.get_ingredients() == {
+        Ingredient("Ketshup"),
         Ingredient("tomate"),
         Ingredient("queijo mussarela"),
     }
@@ -38,6 +44,8 @@ def test_dish():
     }
 
     with pytest.raises(ValueError):
-        Dish("pizza", 0)
+        Dish("pizza de mozzarella", 0)
+    with pytest.raises(ValueError):
+        Dish("pizza de mozzarella", -5)
     with pytest.raises(TypeError):
-        Dish("pizza", "50.00")
+        Dish("pizza de mozzarella", "50.00")
