@@ -26,7 +26,10 @@ class MenuBuilder:
     def get_main_menu(self, restriction=None):
         eligible_dishes = []
 
+        # itera sobre todos os pratos
         for dish in self.menu_data.dishes:
+
+            # verifica se o prato é elegivel
             is_true = (
                 (
                     restriction is None or restriction not in
@@ -37,6 +40,7 @@ class MenuBuilder:
                     dish.get_ingredients())
             )
 
+            # se for true cria dict com os dados do prato
             if is_true:
                 dish_data = {
                     "dish_name": dish.name,
