@@ -21,16 +21,24 @@ class MenuData:
 
     # cria um prato e adiciona ao Conjunto de pratos
     def create_dish(self, dish_object):
+        # descompctando os valores do objeto
         name, price, ingredient, quantity = dish_object
         price = float(price)
 
+        # verifica se o prato ja existe com o mesmo nome
         existing_dish = next((d for d in self.dishes if d.name == name), None)
 
+        # se nao existir, cria um novo prato
         if existing_dish is None:
             new_dish = Dish(name, price)
             self.dishes.append(new_dish)
+        
+        # se existir, usa o prato existente
         else:
             new_dish = existing_dish
 
+        # cria ou obtem o ingrediente com base no nome
         ingredient = Ingredient(ingredient)
+
+        # adiciona como dependencia ingrediente e quantidade ao prato
         new_dish.add_ingredient_dependency(ingredient, int(quantity))
