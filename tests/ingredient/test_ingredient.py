@@ -6,11 +6,11 @@ from src.models.ingredient import (
 
 # Req 1
 def test_ingredient():
-    ingredientTomato = Ingredient("tomato")
-    ingredientTomato2 = Ingredient("tomato")
-    assert ingredientTomato.name == "tomato"
-    assert hash(ingredientTomato) == hash(Ingredient("tomato"))
-    assert ingredientTomato.__repr__() == "Ingredient('tomato')"
+    ingredientTomato = Ingredient("tomate")
+    ingredientTomato2 = Ingredient("tomate")
+    assert ingredientTomato.name == "tomate"
+    assert hash(ingredientTomato) == hash(Ingredient("tomate"))
+    assert ingredientTomato.__repr__() == "Ingredient('tomate')"
 
     ingredientMozzarella = Ingredient("queijo mussarela")
     assert ingredientMozzarella.name == "queijo mussarela"
