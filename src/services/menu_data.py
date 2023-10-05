@@ -32,7 +32,7 @@ class MenuData:
         if existing_dish is None:
             new_dish = Dish(name, price)
             self.dishes.append(new_dish)
-        
+
         # se existir, usa o prato existente
         else:
             new_dish = existing_dish
