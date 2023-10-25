@@ -29,10 +29,6 @@ Python venv
 
 ### Entre no diretório
 
-```bash
-cd tech-news
-```
-
 ### Crie o ambiente virtual
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
